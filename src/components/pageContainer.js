@@ -5,7 +5,11 @@ import {Editor} from 'draft-js';
 import createImagePlugin from "draft-js-image-plugin";
 import createVideoPlugin from 'draft-js-video-plugin';
 import "../App.css";
+import axios from 'axios';
 import {hashtagStrategy, findLinkEntities, findVideoEntities, findImageEntities} from './entities/media_handler';
+import {initialState} from './entities/initial_state';
+import {stateToHTML} from 'draft-js-export-html';
+
 
 const imagePlugin = createImagePlugin();
 const videoPlugin = createVideoPlugin();
@@ -74,9 +78,10 @@ class PageContainer extends React.Component {
       ]);
       const content = localStorage.getItem('content');
       const _editorState =  JSON.parse(content);
-       this.state = {
-              editorState: EditorState.createWithContent(convertFromRaw(_editorState), decorator)
-            };
+      const newEditorState = EditorState.createWithContent(convertFromRaw(initialState), decorator)
+        this.state = {
+              editorState: newEditorState
+        };
       
   }
 
@@ -102,10 +107,21 @@ class PageContainer extends React.Component {
 
   onSubmit = ()=> {
     const editorState = this.state.editorState;
-      const content = editorState.getCurrentContent();
-      const content_convert = convertToRaw(content);
-      this.saveContent(content_convert);
-      
+    const content = editorState.getCurrentContent();
+    const content_convert = convertToRaw(content);
+    this.saveContent(content_convert);
+    const html_data = stateToHTML(editorState.getCurrentContent())
+    const json_data = JSON.stringify(content_convert)
+
+    axios.post('http://localhost:8000/add_post/', { "json_data":json_data,"html_data": html_data })
+         .then(res => res.json())
+      .then(
+        (result) => {
+          console.log(result)
+        },
+        (error) => {
+        }
+      )
   }
 
 
@@ -168,15 +184,15 @@ class PageContainer extends React.Component {
             <em>I</em>
           </button>
           <button className="inline styleButton" onClick={() =>this.onAddMedia('video')}>
-             <i className="fa fa-spinner">video</i>
+             Video
           </button>
           <button className="inline styleButton" onClick={() =>this.onAddMedia('image')}>
-            image
+            Image
           </button>
         </div>
         <div className="editors">
           <Editor
-            placeholder="Tell a story..."
+            placeholder="Tell your story..."
             editorState={this.state.editorState}
             handleKeyCommand={this.handleKeyCommand}
             onChange={this.onChange}

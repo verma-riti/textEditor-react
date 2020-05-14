@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.19.2",
     "draft-js": "^0.11.5",
+    "draft-js-export-html": "^1.4.1",
     "draft-js-hashtag-plugin": "^2.0.4",
     "draft-js-image-plugin": "^2.0.7",
     "draft-js-video-plugin": "^2.0.2",
