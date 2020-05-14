@@ -38,71 +38,7 @@
 }
 
 .editor {
-  margin: 100px 400px;
-  width: 600px;
-}
-.RichEditor-root {
-  background: #fff;
-  border: 1px solid #ddd;
-  font-family: 'Georgia', serif;
-  font-size: 14px;
-  padding: 15px;
-}
-
-.RichEditor-editor {
-  border-top: 1px solid #ddd;
-  cursor: text;
-  font-size: 16px;
-  margin-top: 10px;
-}
-
-.RichEditor-editor .public-DraftEditorPlaceholder-root,
-.RichEditor-editor .public-DraftEditor-content {
-  margin: 0 -15px -15px;
-  padding: 15px;
-}
-
-.RichEditor-editor .public-DraftEditor-content {
-  min-height: 100px;
-}
-
-.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {
-  display: none;
-}
-
-.RichEditor-editor .RichEditor-blockquote {
-  border-left: 5px solid #eee;
-  color: #666;
-  font-family: 'Hoefler Text', 'Georgia', serif;
-  font-style: italic;
-  margin: 16px 0;
-  padding: 10px 20px;
-}
-
-.RichEditor-editor .public-DraftStyleDefault-pre {
-  background-color: rgba(0, 0, 0, 0.05);
-  font-family: 'Inconsolata', 'Menlo', 'Consolas', monospace;
-  font-size: 16px;
-  padding: 20px;
-}
-
-.RichEditor-controls {
-  font-family: 'Helvetica', sans-serif;
-  font-size: 14px;
-  margin-bottom: 5px;
-  user-select: none;
-}
-
-.RichEditor-styleButton {
-  color: #999;
-  cursor: pointer;
-  margin-right: 16px;
-  padding: 2px 0;
-  display: inline-block;
-}
-
-.RichEditor-activeButton {
-  color: #5890ff;
+  margin: 20px 300px;
 }
 
 button {
@@ -124,8 +60,8 @@ button {
   min-height: 200px;
   height: auto;
   padding: 10px;
-  margin: 100px 400px;
-  width: 600px;
+  margin: 50px 300px;
+  display: inline-table;
   box-shadow: 5px 10px 18px #888888;
 }
 
@@ -137,16 +73,18 @@ button {
 }
 
 .editors {
-  border: 1px transparent solid;
-  padding: 20px 20px 20px 20px;
-  margin: 1.25em;
-  font-size: 1.1em;
-  border-radius: 6px;
-  text-align: left;
-  line-height: 1.25em;
-  color: black;
-  min-height: 200px;
-  position: relative;
+  border: 5px #d6d3d3f2 solid;
+    padding: 20px 20px 20px 20px;
+    margin: 1.25em;
+    font-size: 1.1em;
+    border-radius: 6px;
+    text-align: left;
+    line-height: 1.25em;
+    color: black;
+    background: #c7c4c438;
+    display: inline-block;
+    min-height: 200px;
+    position: relative;
 }
 
 .buttonMenu {
@@ -158,4 +96,15 @@ button {
 }
 .hashtag {
   color: blue;
+}
+
+.menuButtons{
+  display: flex !important;
+}
+
+.edit_pencil {
+      font-size: 30px;
+    float: right;
+    margin: 0px 30px ;
+    color: blue;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { EditorState, RichUtils, AtomicBlockUtils, convertToRaw, convertFromRaw, CompositeDecorator } from "draft-js";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {Editor} from 'draft-js';
 import createImagePlugin from "draft-js-image-plugin";
 import createVideoPlugin from 'draft-js-video-plugin';
@@ -168,19 +168,10 @@ class PageContainer extends React.Component {
             <em>I</em>
           </button>
           <button className="inline styleButton" onClick={() =>this.onAddMedia('video')}>
-            Video
+             <i className="fa fa-spinner">video</i>
           </button>
           <button className="inline styleButton" onClick={() =>this.onAddMedia('image')}>
-            <i 
-              className="material-icons"
-              style={{
-                fontSize:"16px",
-                textAlign: "center",
-                padding: "0px",
-                margin: "0px"
-              }}>
-              image
-            </i>
+            image
           </button>
         </div>
         <div className="editors">

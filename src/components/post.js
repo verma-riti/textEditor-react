@@ -46,6 +46,7 @@ const HashtagSpan = props => {
 };
 
 function Posts(props) {
+
   const decorator = new CompositeDecorator([
         {
           strategy: hashtagStrategy,
@@ -69,15 +70,48 @@ function Posts(props) {
   const _editorState =  JSON.parse(content);
   const new_editorState =  EditorState.createWithContent(convertFromRaw(_editorState), decorator);
 
-
   const [editorState, setEditorState] = useState(new_editorState);
+  const [isEditable, setisEditable] = useState(false);
+  const editPost = () =>{
+    setisEditable(true);
+    console.log('isEditable = ', isEditable)
+  }
+
+  const SubmitPost = ()=> {
+      const content = editorState.getCurrentContent();
+      const content_convert = convertToRaw(content);
+      saveContent(content_convert);
+      setisEditable(false);
+  }
+
+  const saveContent = (content) => {
+        localStorage.setItem('content', JSON.stringify(content));
+  }
+
+  const onChange = editorState => {
+    setEditorState(editorState);
+  };
 
   return (
-        <div className="profile-page">     
-          <button>Edit</button> 
-          <div className="content_block">
-            <Editor editorState={editorState} readOnly={true} />
-          </div>
+        <div >     
+          {isEditable ?
+                      <div className="editors">
+                        <p className="edit_pencil" onClick={SubmitPost}>Save</p> 
+                        
+                          <Editor 
+                          editorState={editorState}
+                          onChange={onChange} />
+                        
+                       </div> 
+                      :
+                      <div className="profile-page">
+                        <span className="edit_pencil"  onClick={editPost}>&#9998;</span> 
+                        <div className="content_block">
+                          <Editor editorState={editorState} readOnly={true} />
+                        </div>
+                      </div>
+                        
+          }
         </div>
     );
 }

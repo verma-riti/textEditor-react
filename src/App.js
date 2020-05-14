@@ -8,11 +8,13 @@ import Post from './components/post'
 function App() {
   return (
     <div className="App">
-     <PageContainer />
+     
       <div className="editor">
-       <Post />
+       <PageContainer />
       </div>
-      
+      <div className="post_status">
+        <Post />
+      </div>
     </div>
   );
 }
