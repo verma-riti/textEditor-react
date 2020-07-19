@@ -16,3 +16,5 @@ You will also see any lint errors in the console.
  User would be able to post content/text, hashtag(word starting with #), URL and attach images and video.Everything that starts from # should be treated as a hashtag and it would get highlighted with blue color.User can edit submitted post by clicking edit or pencil icon to edit post and can update text, hashtag, URL, image or video.
 
 <img src="public/editor.png" />
+
+<img src="public/post.png" />
