@@ -9,7 +9,7 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "draft-js": "^0.11.5",
     "draft-js-export-html": "^1.4.1",
     "draft-js-hashtag-plugin": "^2.0.4",
